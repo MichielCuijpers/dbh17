@@ -15,5 +15,10 @@ namespace ToBlockChain.Api.Manager
         {
             return await GetApiClient().Post(Urls.TriggerAddUserAndDevice, model);
         }
+
+        public async Task<APIResponse<string>> PostConsumption(Consumption model)
+        {
+            return await GetApiClient().Post(Urls.TriggerMonthlyUsageData, model);
+        }
     }
 }

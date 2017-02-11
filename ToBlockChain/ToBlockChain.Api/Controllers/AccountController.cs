@@ -65,6 +65,8 @@ namespace ToBlockChain.Api.Controllers
 
                 //4. Register User to Database
                 var result = await DataAnalyticsApiManager.RegisterUser(user);
+
+
                 _logger.Info($"{ nameof(this.Register)} User Registered");
 
                 return Ok(result);

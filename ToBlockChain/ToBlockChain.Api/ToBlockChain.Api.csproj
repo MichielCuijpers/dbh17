@@ -45,6 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.1.1\lib\netstandard1.0\crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EdjCase.JsonRpc.Client, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EdjCase.JsonRpc.Client.1.0.5\lib\net451\EdjCase.JsonRpc.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EdjCase.JsonRpc.Core, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EdjCase.JsonRpc.Core.1.0.4\lib\net451\EdjCase.JsonRpc.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -118,6 +130,10 @@
       <HintPath>..\packages\WindowsAzure.Storage.8.0.1\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Nethereum.Portable, Version=1.0.6239.26382, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nethereum.Portable.1.0.6\lib\portable45-net45+win8+wpa81\Nethereum.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -127,9 +143,16 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -244,7 +267,9 @@
     <Compile Include="Manager\AccountManager.cs" />
     <Compile Include="Manager\DataAnalyticsApiManager.cs" />
     <Compile Include="Manager\MandateManager.cs" />
+    <Compile Include="Manager\SmartContractManager.cs" />
     <Compile Include="Models\APIResponse.cs" />
+    <Compile Include="Models\ConsumptionModel.cs" />
     <Compile Include="Models\ErrorAPI.cs" />
     <Compile Include="Models\GenerationModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -304,6 +329,10 @@
     <ProjectReference Include="..\ToBlockChain.Logging\ToBlockChain.Logging.csproj">
       <Project>{f1002fe4-9150-4526-912d-e7e489655c8a}</Project>
       <Name>ToBlockChain.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToBlockChain.Services\ToBlockChain.Services.csproj">
+      <Project>{a5aa4ff6-8698-49fe-b469-3cf91d869b74}</Project>
+      <Name>ToBlockChain.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
