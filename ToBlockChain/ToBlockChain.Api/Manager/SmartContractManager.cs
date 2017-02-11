@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using ToBlockChain.Entities.BlockChain;
 using ToBlockChain.Services;
 
 namespace ToBlockChain.Api.Manager
@@ -19,8 +20,8 @@ namespace ToBlockChain.Api.Manager
 
         private SmartContractService GetSmartContractService()
         {
-            var web3 = new Web3("https://eth2.augur.net");
-            var service = new SmartContractService(web3, "0xbb9bc244d798123fde783fcc1c72d3bb8c189413");
+            var web3 = new Web3("http://tbcnewrfo.westeurope.cloudapp.azure.com:8545");
+            var service = new SmartContractService(web3, "0xeecf672f7f2fb6522a2859c0f0570b8c252e21a8");
             return service;
         }
 
@@ -29,9 +30,11 @@ namespace ToBlockChain.Api.Manager
             return Task.Run(() => call).Result;
         }
 
-        public void GetProposal()
+        public string RegisterUser(User user)
         {
-            var proposals = Sync(SmartContractService.GetNumberOfProposals());
+            var response = Sync(SmartContractService.RegisterUser(user));
+
+            return response;
         }
 
     }
