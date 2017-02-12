@@ -16,25 +16,25 @@ namespace ToBlockChain.Api.Models
         public string Email { get; set; }
 
         [JsonProperty("act_consumed_solar_production_own")]
-        public string ActualConsumedSolarProductionOwn { get; set; }
+        public List<int> ActualConsumedSolarProductionOwn { get; set; }
 
         [JsonProperty("act_consumed_solar_production_other")]
-        public string ActualConsumedSolarProductionOther { get; set; }
+        public List<int> ActualConsumedSolarProductionOther { get; set; }
 
         [JsonProperty("act_consumed_grey")]
-        public string ActualConsumedGrey { get; set; }
+        public List<int> ActualConsumedGrey { get; set; }
 
         [JsonProperty("act_backdeliver_solar_production_own")]
-        public string ActualBackdeliverSolarProductionOwn { get; set; }
+        public List<int> ActualBackdeliverSolarProductionOwn { get; set; }
 
         [JsonProperty("pred_consumed_solar_production_own")]
-        public string PredConsumedSolarProductionOwn { get; set; }
+        public List<int> PredConsumedSolarProductionOwn { get; set; }
 
         [JsonProperty("pred_consumed_grey")]
-        public string PredConsumedGrey { get; set; }
+        public List<int> PredConsumedGrey { get; set; }
 
         [JsonProperty("pred_backdeliver_solar_production_own")]
-        public string PredBackdeliverSolarProductionOwn { get; set; }
+        public List<int> PredBackdeliverSolarProductionOwn { get; set; }
         
 
     }

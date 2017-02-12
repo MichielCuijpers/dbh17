@@ -4,6 +4,7 @@ using ToBlockChain.Api.Manager;
 using ToBlockChain.Entities.BlockChain;
 using ToBlockChain.Api.Models;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ToBlockChain.Api.Tests
 {
@@ -75,7 +76,7 @@ namespace ToBlockChain.Api.Tests
             var generation = new GenerationModel
             {
                 Email = "dharmi.tanna@gmail.com",
-                ActualConsumedSolarProductionOwn = "1000"
+                ActualBackdeliverSolarProductionOwn = new List<int> { 1000, 200, 3000 }
             };
 
             //when

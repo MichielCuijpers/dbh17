@@ -6,7 +6,7 @@ namespace ToBlockChain.Api.Models
     public class MandateType
     {
         [JsonProperty("active")]
-        public bool Active { get; set; }
+        public bool? Active { get; set; }
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }

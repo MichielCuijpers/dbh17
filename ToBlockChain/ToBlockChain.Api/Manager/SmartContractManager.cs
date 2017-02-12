@@ -23,7 +23,7 @@ namespace ToBlockChain.Api.Manager
         private SmartContractService GetSmartContractService()
         {
             var web3 = new Web3("http://tbcnewrfo.westeurope.cloudapp.azure.com:8545");
-            var service = new SmartContractService(web3, "0xeecf672f7f2fb6522a2859c0f0570b8c252e21a8");
+            var service = new SmartContractService(web3, "0x16a072fc343092502bb4c3c4d9ce75d94e692c11");
             return service;
         }
 
@@ -48,16 +48,16 @@ namespace ToBlockChain.Api.Manager
             var mandate = new Mandate
             {
                 Email = model.Email,
-                MobileNumber = model.MobileNumber,
-                SmartActive = model.SmartMeter.Active,
-                SmartStartDate = model.SmartMeter.StartDate,
-                SmartEndDate = model.SmartMeter.EndDate,
-                ProfileActive = model.SourceProfile.Active,
-                ProfileStartDate = model.SourceProfile.StartDate,
-                ProfileEndDate = model.SourceProfile.EndDate,
-                TrustedPartyActive = model.TrustedParty.Active,
-                TrustedPartyStartDate = model.TrustedParty.StartDate,
-                TrustedPartyEndDate = model.TrustedParty.EndDate
+                MobileNumber = (string.IsNullOrEmpty(model.MobileNumber)) ? "" : model.MobileNumber,
+                SmartActive = (model.SmartMeter != null) ? model.SmartMeter.Active : false,
+                SmartStartDate = (model.SmartMeter != null) ? model.SmartMeter.StartDate : "",
+                SmartEndDate = (model.SmartMeter != null) ? model.SmartMeter.EndDate : "",
+                ProfileActive = (model.SourceProfile != null) ? model.SourceProfile.Active : false,
+                ProfileStartDate = (model.SourceProfile != null) ? model.SourceProfile.StartDate : "",
+                ProfileEndDate = (model.SourceProfile != null) ? model.SourceProfile.EndDate : "",
+                TrustedPartyActive = (model.TrustedParty != null) ? model?.TrustedParty.Active : false,
+                TrustedPartyStartDate = (model.TrustedParty != null) ? model.TrustedParty.StartDate : "",
+                TrustedPartyEndDate = (model.TrustedParty != null) ? model.TrustedParty.EndDate : ""
             };
 
             var response = await SmartContractService.SetMandate(mandate);
@@ -127,7 +127,7 @@ namespace ToBlockChain.Api.Manager
             {
                 Email = model.Email,
                 DeviceId = "123456789",
-                GenerationInKW = Convert.ToInt32(model.ActualConsumedSolarProductionOwn)
+                GenerationInKW = model.ActualBackdeliverSolarProductionOwn.Sum()
             };
 
             var response = await SmartContractService.SetPowerUsageGeneration(generation);

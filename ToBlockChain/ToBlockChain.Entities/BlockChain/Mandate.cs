@@ -16,7 +16,7 @@ namespace ToBlockChain.Entities.BlockChain
         public string MobileNumber { get; set; }
 
         [JsonProperty("_smActive")]
-        public bool SmartActive { get; set; }
+        public bool? SmartActive { get; set; }
 
         [JsonProperty("_smStartDate")]
         public string SmartStartDate { get; set; }
@@ -25,7 +25,7 @@ namespace ToBlockChain.Entities.BlockChain
         public string SmartEndDate { get; set; }
 
         [JsonProperty("_spActive")]
-        public bool ProfileActive { get; set; }
+        public bool? ProfileActive { get; set; }
 
         [JsonProperty("_spStartDate")]
         public string ProfileStartDate { get; set; }
@@ -34,7 +34,7 @@ namespace ToBlockChain.Entities.BlockChain
         public string ProfileEndDate { get; set; }
 
         [JsonProperty("_tpActive")]
-        public bool TrustedPartyActive { get; set; }
+        public bool? TrustedPartyActive { get; set; }
 
         [JsonProperty("_tpStartDate")]
         public string TrustedPartyStartDate { get; set; }

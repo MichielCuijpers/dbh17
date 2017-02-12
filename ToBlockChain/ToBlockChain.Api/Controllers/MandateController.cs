@@ -1,4 +1,5 @@
-﻿using Swashbuckle.Swagger.Annotations;
+﻿using Newtonsoft.Json;
+using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,9 @@ namespace ToBlockChain.Api.Controllers
                     _logger.Warn($"{ nameof(this.PostMandate)} Unauthorised user");
                     return Unauthorized();
                 }
+
+                var content = JsonConvert.SerializeObject(model);
+                _logger.Info($"{ nameof(this.PostMandate)} Payload : {content}");
 
                 //2. Set Mandate to BlockChain
                 var result = await SmartContractManager.SetMandate(model);
