@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlockChain\Generation.cs" />
+    <Compile Include="BlockChain\Mandate.cs" />
+    <Compile Include="BlockChain\Share.cs" />
     <Compile Include="BlockChain\User.cs" />
     <Compile Include="Consumption.cs" />
     <Compile Include="User.cs" />

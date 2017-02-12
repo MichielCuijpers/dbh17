@@ -261,12 +261,12 @@
     <Compile Include="Controllers\GenerationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MandateController.cs" />
+    <Compile Include="Controllers\ShareController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Manager\AccountManager.cs" />
     <Compile Include="Manager\DataAnalyticsApiManager.cs" />
-    <Compile Include="Manager\MandateManager.cs" />
     <Compile Include="Manager\SmartContractManager.cs" />
     <Compile Include="Models\APIResponse.cs" />
     <Compile Include="Models\ConsumptionModel.cs" />
@@ -277,6 +277,7 @@
     <Compile Include="Models\MandateModel.cs" />
     <Compile Include="Models\MandateType.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\ShareModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

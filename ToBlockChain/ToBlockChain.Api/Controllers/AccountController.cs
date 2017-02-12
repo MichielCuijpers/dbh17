@@ -15,6 +15,7 @@ namespace ToBlockChain.Api.Controllers
 
         AccountManager AccountManager { get; set; } 
         DataAnalyticsApiManager DataAnalyticsApiManager { get; set; }
+        SmartContractManager SmartContractManager { get; set; }
 
         #endregion
 
@@ -23,6 +24,7 @@ namespace ToBlockChain.Api.Controllers
         {
             AccountManager = new AccountManager();
             DataAnalyticsApiManager = new DataAnalyticsApiManager();
+            SmartContractManager = new SmartContractManager();
         } 
         #endregion
 
@@ -65,6 +67,10 @@ namespace ToBlockChain.Api.Controllers
 
                 //4. Register User to Database
                 var result = await DataAnalyticsApiManager.RegisterUser(user);
+
+                //5. Register User to BlockChain
+                var bchResponse = await SmartContractManager.RegisterUser(model);
+                _logger.Info($"{ nameof(this.Register)} Smart Contract Response : {bchResponse}");
 
 
                 _logger.Info($"{ nameof(this.Register)} User Registered");

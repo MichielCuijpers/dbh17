@@ -9,9 +9,9 @@ namespace ToBlockChain.Api.Models
         public bool Active { get; set; }
 
         [JsonProperty("startDate")]
-        public DateTime StartDate { get; set; }
+        public string StartDate { get; set; }
 
         [JsonProperty("endDate")]
-        public DateTime EndDate { get; set; }
+        public string EndDate { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace ToBlockChain.Api.Controllers
     {
         #region Properties
 
-        MandateManager MandateManager { get; set; }
+        SmartContractManager SmartContractManager { get; set; }
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace ToBlockChain.Api.Controllers
 
         public MandateController()
         {
-            MandateManager = new MandateManager();
+            SmartContractManager = new SmartContractManager();
         }
 
         #endregion
@@ -38,7 +38,7 @@ namespace ToBlockChain.Api.Controllers
             //1. Authorize Request
             if (!IsAuthorized())
             {
-                //_logger.Warn($"{ nameof(this.)} Unauthorised user");
+                _logger.Warn($"{ nameof(this.GetMandate)} Unauthorised user");
                 return Unauthorized();
             }
 
@@ -47,7 +47,7 @@ namespace ToBlockChain.Api.Controllers
                 Email = email,
                 MobileNumber = mobileno
             };
-            var result = MandateManager.GetMandate(model);
+            var result = SmartContractManager.GetMandate(model);
 
             return Ok(result);
         }
@@ -59,14 +59,24 @@ namespace ToBlockChain.Api.Controllers
         [SwaggerResponse(HttpStatusCode.OK)]
         public async Task<IHttpActionResult> PostMandate(MandateModel model)
         {
-            //1. Authorize Request
-            if (!IsAuthorized())
+            try
             {
-                //_logger.Warn($"{ nameof(this.)} Unauthorised user");
-                return Unauthorized();
-            }
+                //1. Authorize Request
+                if (!IsAuthorized())
+                {
+                    _logger.Warn($"{ nameof(this.PostMandate)} Unauthorised user");
+                    return Unauthorized();
+                }
 
-            return Ok();
+                //2. Set Mandate to BlockChain
+                var result = await SmartContractManager.SetMandate(model);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error($"{ nameof(this.PostMandate)} Error : {ex}");
+                return InternalServerError();
+            }
         }
     }
 }

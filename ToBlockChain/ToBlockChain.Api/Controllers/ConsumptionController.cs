@@ -17,6 +17,7 @@ namespace ToBlockChain.Api.Controllers
         #region Properties
 
         DataAnalyticsApiManager DataAnalyticsApiManager { get; set; }
+        SmartContractManager SmartContractManager { get; set; }
 
         #endregion
 
@@ -25,6 +26,7 @@ namespace ToBlockChain.Api.Controllers
         public ConsumptionController()
         {
             DataAnalyticsApiManager = new DataAnalyticsApiManager();
+            SmartContractManager = new SmartContractManager();
         }
 
         #endregion
@@ -54,6 +56,29 @@ namespace ToBlockChain.Api.Controllers
 
             //3. Post Consumption
             var result = await DataAnalyticsApiManager.PostConsumption(consumption);
+
+
+            _logger.Info($"{ nameof(this.PostConsumption)} Consumption Post Success");
+
+            return Ok(result);
+        }
+
+        // POST api/Consumption
+        [Route("api/consumption/update")]
+        [HttpPost]
+        [SwaggerOperation("consumption")]
+        [SwaggerResponse(HttpStatusCode.OK)]
+        public async Task<IHttpActionResult> UpdateGeneration(GenerationModel model)
+        {
+            //1. Authorize Request
+            if (!IsAuthorized())
+            {
+                _logger.Warn($"{ nameof(this.UpdateGeneration)} Unauthorised user");
+                return Unauthorized();
+            }
+
+            //2. Post Generation
+            var result = await SmartContractManager.SetPowerUsageGeneration(model);
 
 
             _logger.Info($"{ nameof(this.PostConsumption)} Consumption Post Success");
