@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ToBlockChain.Logging/obj
+/ToBlockChain.Logging/obj
+/ToBlockChain.Logging/bin/Release
+/packages
+/TestResults
